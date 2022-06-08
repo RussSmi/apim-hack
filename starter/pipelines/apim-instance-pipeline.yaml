@@ -1,0 +1,31 @@
+# This pipeline depends on a service connection being created in Azure DevOps
+trigger:
+ branches:
+  include:
+    - main
+ paths:
+   exclude:
+     - pipelines
+
+name: Deploy Bicep files - $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)-$(Hours)$(Minutes)$(Seconds)
+
+# variables:
+#   vmImageName: 'ubuntu-latest'
+#   azureServiceConnection: 'Your Azure Connection'
+#   resourceGroupName: 'exampleRG'
+#   location: 'uksouth'
+#   templateFile: 'main.bicep'
+#   deplymentName: 'ADO-Deploy'
+#   parameterFile: 'main.parameters-dev.json'
+# pool:
+#   vmImage: $(vmImageName)
+
+# steps:
+# - task: AzureCLI@2
+#   inputs:
+#     azureSubscription: $(azureServiceConnection)
+#     scriptType: bash
+#     scriptLocation: inlineScript
+#     inlineScript: |
+#       az --version
+#       az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(parameterFile) --location $(location)

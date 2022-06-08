@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "uksouth"
+        },
+        "nameprefix": {
+            "value": "############"
+        },
+        "env": {
+            "value": "dev"
+        },
+        "apimemail": {
+            "value": "admin@api-hack.api.com"
+        }
+    }
+}
