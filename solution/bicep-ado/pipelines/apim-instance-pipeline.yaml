@@ -26,54 +26,63 @@ stages:
 - stage: 'dev-deploy'
   displayName: 'Deploy to Dev Environment Stage'
   jobs:
-  - job: 'dev-deploy-bicep'
-    displayName: 'Deploy to Dev Environment Job'
+  - deployment: 'dev-deploy-bicep'
+    displayName: 'Deploy to Dev Environment Deployment'
     pool:
       vmImage: $(vmImageName)
     environment: 
       name: 'dev'
-    steps:
-    - task: AzureCLI@2
-      inputs:
-        azureSubscription: $(devAzureServiceConnection)
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
-          az --version
-          az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(devParameterFile) --location $(location)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: $(devAzureServiceConnection)
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az --version
+                az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(devParameterFile) --location $(location)
 - stage: 'test-deploy'
   displayName: 'Deploy to Test Environment Stage'
   jobs:
-  - job: 'test-deploy-bicep'
-    displayName: 'Deploy to Test Environment Job'
+  - deployment: 'test-deploy-bicep'
+    displayName: 'Deploy to Test Environment Deployment'
     pool:
       vmImage: $(vmImageName)
     environment: 
       name: 'test'
-    steps:
-    - task: AzureCLI@2
-      inputs:
-        azureSubscription: $(testAzureServiceConnection)
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
-          az --version
-          az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(testParameterFile) --location $(location)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: $(testAzureServiceConnection)
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az --version
+                az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(testParameterFile) --location $(location)
 - stage: 'prod-deploy'
   displayName: 'Deploy to Prod Environment Stage'
   jobs:
-  - job: 'prod-deploy-bicep'
-    displayName: 'Deploy to Prod Environment Job'
+  - deployment: 'prod-deploy-bicep'
+    displayName: 'Deploy to Prod Environment Deployment'
     pool:
       vmImage: $(vmImageName)
     environment: 
       name: 'prod'
-    steps:
-    - task: AzureCLI@2
-      inputs:
-        azureSubscription: $(prodAzureServiceConnection)
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
-          az --version
-          az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(prodParameterFile) --location $(location)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: $(prodAzureServiceConnection)
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az --version
+                az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(prodParameterFile) --location $(location)
