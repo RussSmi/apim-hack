@@ -23,7 +23,7 @@ variables:
 
 
 stages:
-- stage: 'dev-deploy'
+- stage: 'dev_deploy'
   displayName: 'Deploy to Dev Environment Stage'
   jobs:
   - deployment: 'dev-deploy-bicep'
@@ -44,7 +44,7 @@ stages:
               inlineScript: |
                 az --version
                 az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(devParameterFile) --location $(location)
-- stage: 'test-deploy'
+- stage: 'test_deploy'
   displayName: 'Deploy to Test Environment Stage'
   jobs:
   - deployment: 'test-deploy-bicep'
@@ -65,7 +65,7 @@ stages:
               inlineScript: |
                 az --version
                 az deployment sub create -n $(deplymentName) --template-file $(templateFile) --parameters @$(testParameterFile) --location $(location)
-- stage: 'prod-deploy'
+- stage: 'prod_deploy'
   displayName: 'Deploy to Prod Environment Stage'
   jobs:
   - deployment: 'prod-deploy-bicep'
