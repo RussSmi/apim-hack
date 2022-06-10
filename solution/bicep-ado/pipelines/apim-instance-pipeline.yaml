@@ -11,9 +11,9 @@ name: Deploy Bicep files - $(TeamProject)_$(Build.DefinitionName)_$(SourceBranch
 
 variables:
   vmImageName: 'ubuntu-latest'
-  devAzureServiceConnection: 'Your Azure Connection'
-  testAzureServiceConnection: 'Your Azure Connection'
-  prodAzureServiceConnection: 'Your Azure Connection'
+  devAzureServiceConnection: 'russ-airs'
+  testAzureServiceConnection: 'russ-airs'
+  prodAzureServiceConnection: 'russ-airs'
   location: 'uksouth'
   templateFile: 'main.bicep'
   deplymentName: 'ADO-Deploy'
@@ -30,7 +30,8 @@ stages:
     displayName: 'Deploy to Dev Environment Job'
     pool:
       vmImage: $(vmImageName)
-    environment: 'dev'
+    environment: 
+      name: 'dev'
     steps:
     - task: AzureCLI@2
       inputs:
@@ -47,7 +48,8 @@ stages:
     displayName: 'Deploy to Test Environment Job'
     pool:
       vmImage: $(vmImageName)
-    environment: 'test'
+    environment: 
+      name: 'test'
     steps:
     - task: AzureCLI@2
       inputs:
@@ -64,7 +66,8 @@ stages:
     displayName: 'Deploy to Prod Environment Job'
     pool:
       vmImage: $(vmImageName)
-    environment: 'prod'
+    environment: 
+      name: 'prod'
     steps:
     - task: AzureCLI@2
       inputs:
