@@ -26,7 +26,7 @@ stages:
 - stage: 'dev_deploy'
   displayName: 'Deploy to Dev Environment Stage'
   jobs:
-  - deployment: 'dev-deploy-bicep'
+  - deployment: 'dev_deploy_bicep'
     displayName: 'Deploy to Dev Environment Deployment'
     pool:
       vmImage: $(vmImageName)
@@ -47,7 +47,7 @@ stages:
 - stage: 'test_deploy'
   displayName: 'Deploy to Test Environment Stage'
   jobs:
-  - deployment: 'test-deploy-bicep'
+  - deployment: 'test_deploy_bicep'
     displayName: 'Deploy to Test Environment Deployment'
     pool:
       vmImage: $(vmImageName)
@@ -68,7 +68,7 @@ stages:
 - stage: 'prod_deploy'
   displayName: 'Deploy to Prod Environment Stage'
   jobs:
-  - deployment: 'prod-deploy-bicep'
+  - deployment: 'prod_deploy_bicep'
     displayName: 'Deploy to Prod Environment Deployment'
     pool:
       vmImage: $(vmImageName)
