@@ -15,11 +15,11 @@ variables:
   testAzureServiceConnection: 'russ-airs'
   prodAzureServiceConnection: 'russ-airs'
   location: 'uksouth'
-  templateFile: './solution/bicep-ado/main.bicep'
+  templateFile: '/solution/bicep-ado/main.bicep'
   deplymentName: 'ADO-Deploy'
-  devParameterFile: './solution/bicep-ado/main.parameters-dev.json'
-  testParameterFile: './solution/bicep-ado/main.parameters-test.json'
-  prodParameterFile: './solution/bicep-ado/main.parameters-prod.json'
+  devParameterFile: '/solution/bicep-ado/main.parameters-dev.json'
+  testParameterFile: '/solution/bicep-ado/main.parameters-test.json'
+  prodParameterFile: '/solution/bicep-ado/main.parameters-prod.json'
 
 
 stages:
