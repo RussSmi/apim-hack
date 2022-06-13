@@ -59,6 +59,7 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
           - task: AzureCLI@2
             inputs:
               azureSubscription: $(testAzureServiceConnection)
@@ -80,6 +81,7 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
           - task: AzureCLI@2
             inputs:
               azureSubscription: $(prodAzureServiceConnection)
