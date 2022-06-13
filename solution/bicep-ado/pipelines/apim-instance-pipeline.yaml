@@ -36,7 +36,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - download: current
+          - checkout: self
           - task: AzureCLI@2
             inputs:
               azureSubscription: $(devAzureServiceConnection)
