@@ -17,9 +17,9 @@ variables:
   location: 'uksouth'
   templateFile: '$(Build.SourcesDirectory)/solution/bicep-ado/main.bicep'
   deplymentName: 'ADO-Deploy'
-  devParameterFile: '$(Build.SourcesDirectory)/solution/bicep-ado/main.parameters-dev.json'
-  testParameterFile: '$(Build.SourcesDirectory)/solution/bicep-ado/main.parameters-test.json'
-  prodParameterFile: '$(Build.SourcesDirectory)/solution/bicep-ado/main.parameters-prod.json'
+  devParameterFile: '$(Build.SourcesDirectory)/solution/bicep/main.parameters-dev.json'
+  testParameterFile: '$(Build.SourcesDirectory)/solution/bicep/main.parameters-test.json'
+  prodParameterFile: '$(Build.SourcesDirectory)/solution/bicep/main.parameters-prod.json'
 
 
 stages:

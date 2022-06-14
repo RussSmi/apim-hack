@@ -1,6 +1,7 @@
 param nameprefix string
 param env string
 param user_url string
+param policy_path string = './apim_policies/'
 
 var apimname = '${nameprefix}-apim-${env}'
 
@@ -47,7 +48,7 @@ resource api_user_get_policy 'Microsoft.ApiManagement/service/apis/operations/po
   parent: api_user_get
   name: 'policy'
   properties: {
-    value: loadTextContent('./apim_policies/user_get_policy.xml')
+    value: loadTextContent('${policy_path}user_get_policy.xml')
     format: 'xml'
   }
 }
