@@ -15,7 +15,7 @@ variables:
   testAzureServiceConnection: 'russ-airs'
   prodAzureServiceConnection: 'russ-airs'
   location: 'uksouth'
-  templateFile: '$(Build.SourcesDirectory)/solution/bicep-ado/main.bicep'
+  templateFile: '$(Build.SourcesDirectory)/solution/bicep/main.bicep'
   deplymentName: 'ADO-Deploy'
   devParameterFile: '$(Build.SourcesDirectory)/solution/bicep/main.parameters-dev.json'
   testParameterFile: '$(Build.SourcesDirectory)/solution/bicep/main.parameters-test.json'
