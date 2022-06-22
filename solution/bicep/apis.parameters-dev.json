@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "nameprefix": {
-            "value": "hastingsdemo"
+            "value": "apim-hack"
         },
         "env": {
             "value": "dev"
